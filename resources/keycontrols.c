@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 20:11:09 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/21 17:42:43 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/09/21 20:30:42 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 int	mouse(int mouse_key_code, int x, int y, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
-	if (mouse_key_code == 5) // Scroll up (zoom in)
+	if (mouse_key_code == 5)
 	{
-		img->zoom *= 1.1; // Increases zoom level by 10%
+		img->zoom *= 1.1;
 		img->y_move += (y - img->height / 2) * 0.0005 / img->zoom;
 		img->x_move += (x - img->width / 2) * 0.0005 / img->zoom;
 	}
-	if (mouse_key_code == 4) //Scroll down (zoom out)
+	if (mouse_key_code == 4)
 	{
 		img->y_move += (y - img->height / 2) * 0.0005 / img->zoom;
 		img->x_move += (x - img->width / 2) * 0.0005 / img->zoom;
-		img->zoom /= 1.1;// Decreases zoom level by 10%
+		img->zoom /= 1.1;
 	}
 	if (img->flag == 0)
 		show_julia(img);
@@ -40,21 +40,18 @@ int	mouse(int mouse_key_code, int x, int y, t_data *img)
 int	mouse_julia(int x, int y, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
-	if (img->stop == 0) //the fractal is not paused ,meaning that the fractal can be zoomed into or out of and moved around while still responding to the mouse movements.
-		img->cy = (x - img->width / 2)
-			/ (0.25 * img->zoom * img->width) + img->x_move;
 	if (img->stop == 0)
-		img->cx = (y - img->height / 2)
-			/ (0.25 * img->zoom * img->height) + img->y_move;
+		img->cy = (x - img->width / 2) / (0.25 * img->zoom * img->width)
+			+ img->x_move;
+	if (img->stop == 0)
+		img->cx = (y - img->height / 2) / (0.25 * img->zoom * img->height)
+			+ img->y_move;
 	if (img->flag == 0)
 		show_julia(img);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0); // Update the image in the window
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
 	return (0);
 }
-/*Right (D/→): Moves right.
-Left (A/←): Moves left.
-Up (W/↑): Moves up.
-Down (S/↓): Moves down.*/
+
 void	arrow_move(t_data *img, int keycode)
 {
 	if (keycode == 2 || keycode == 124)
@@ -71,19 +68,14 @@ void	color_change(t_data *img, int color)
 {
 	img->base_color = color;
 }
-//Escape key (53): Closes the window and exits the program.
-//Keys 1, 2, 3 (18, 19, 20): Change the base color of the fractal.
-//Spacebar (49): Stops the Julia set 
-//Enter (36): Reestart the Julia.
-//arrow_move: Move the view around  
 
 int	keypad(int keycode, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
-	if (keycode == 53) // escape key
+	if (keycode == 53)
 	{
 		mlx_destroy_window(img->mlx, img->mlx_win);
-		exit (0);
+		exit(0);
 	}
 	else if (keycode == 49)
 		img->stop = 1;

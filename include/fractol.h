@@ -6,22 +6,24 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:43:57 by imqandyl          #+#    #+#             */
-/*   Updated: 2024/09/20 19:43:58 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/09/21 20:35:40 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-#define ERROR_MESSAGE "Please enter:\n\t\"./fractol mandelbrot\" or \n\t\"./fractol julia <value_1> <value_2>\""
 
-#include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
+# define ERROR_MESSAGE "Please enter:\n\t\"./fractol mandelbrot\"\
+						or \n\t\"./fractol julia <value_1> <value_2>\""
+
+# include <math.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
 # include "../include/mlx.h"
-#include <unistd.h>  // For STDERR_FILENO
 
-#define WIDTH   800
-#define HEIGHT  800 
+# define WIDTH   800
+# define HEIGHT  800
 
 typedef struct s_data
 {

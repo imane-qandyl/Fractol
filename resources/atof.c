@@ -46,9 +46,8 @@ double	ft_atof(const char *str)
 	res = 0;
 	i = 0;
 	sign = 1.0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\v'
-		|| str[i] == '\f')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\v' || str[i] == '\f')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
@@ -59,8 +58,9 @@ double	ft_atof(const char *str)
 		i++;
 	j = 1;
 	while (str[i] >= '0' && str[i] <= '9')
-		res = res + (str[i++] - '0') / ft_pow (10.0, j++); //.25 -> //2 / 10^1 = 0.2 // 5 / 10^2 = 0.05.
-	return (res * sign);
+		res = res + (str[i++] - '0') / ft_pow(10.0, j++); //.25 -> //2
+	/ 10 ^ 1 = 0.2                                        // 5 / 10^2 = 0.05.
+		return (res * sign);
 }
 
 int	error_check(const char *str)

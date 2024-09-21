@@ -13,7 +13,7 @@
 #include "../include/mlx.h"
 #include "fractol.h"
 
-static	void	algorithm(t_data *img, int w, int h)
+static void	algorithm(t_data *img, int w, int h)
 {
 	double	zx;
 	double	zy;
