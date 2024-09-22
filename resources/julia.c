@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 20:10:29 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/20 19:43:14 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/09/22 08:10:42 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	algorithm(t_data *img, int w, int h)
 	img->xtemp = 0.0;
 	img->iteration = 0;
 	img->max_iteration = 500;
-	while (zx * zx + zy + zy < 2 * 2 && img->iteration < img->max_iteration)
+	while (zx * zx + zy * zy < 2 * 2 && img->iteration < img->max_iteration)
 	{
 		img->xtemp = zx * zx - zy * zy;
 		zy = 2.0 * zx * zy + img->cy;
@@ -34,7 +34,6 @@ static void	algorithm(t_data *img, int w, int h)
 		my_mlx_pixel_put(img, w, h, img->base_color);
 	else
 		my_mlx_pixel_put(img, w, h, img->base_color * img->iteration);
-	w++;
 }
 
 void	show_julia(t_data *img)

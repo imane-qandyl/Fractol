@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 20:00:15 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/21 20:34:11 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/09/22 07:56:03 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,13 @@ void	init_values(t_data *img)
 void	init_fractol(t_data *img, int argc, char **argv)
 {
 	init_values(img);
-	if (argc == 3)
+	if (argc == 4 && ft_strcmp(argv[1], "julia") == 0)
 	{
-		if (error_check(argv[1]) == 0)
+		if (error_check(argv[2]) == 0 || error_check(argv[3]) == 0)
 			ft_error();
-		img->cx = ft_atof(argv[1]);
-		if (img->cx < -2.0 || img->cx > 2.0)
-			ft_error();
-		if (error_check(argv[2]) == 0)
-			ft_error();
-		img->cy = ft_atof(argv[2]);
-		if (img->cy < -2.0 || img->cy > 2.0)
+		img->cx = ft_atof(argv[2]);
+		img->cy = ft_atof(argv[3]);
+		if (img->cx < -2.0 || img->cx > 2.0 || img->cy < -2.0 || img->cy > 2.0)
 			ft_error();
 		img->flag = 0;
 	}
@@ -69,7 +65,7 @@ int	main(int argc, char **argv)
 {
 	t_data	img;
 
-	if (argc > 1 && argc <= 3)
+	if (argc > 1 && argc <= 4)
 	{
 		init_fractol(&img, argc, argv);
 		visualize(&img);

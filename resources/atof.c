@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 20:01:19 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/21 13:48:22 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/09/22 07:33:39 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ double	ft_atof(const char *str)
 		i++;
 	j = 1;
 	while (str[i] >= '0' && str[i] <= '9')
-		res = res + (str[i++] - '0') / ft_pow(10.0, j++); //.25 -> //2
-	/ 10 ^ 1 = 0.2                                        // 5 / 10^2 = 0.05.
-		return (res * sign);
+		res = res + (str[i++] - '0') / ft_pow(10.0, j++);
+	return (res * sign);
 }
 
 int	error_check(const char *str)
