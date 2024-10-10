@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 20:11:09 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/21 20:30:42 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:12:29 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ int	keypad(int keycode, t_data *img)
 		mlx_destroy_window(img->mlx, img->mlx_win);
 		exit(0);
 	}
+	else if (keycode == 18)
+		color_change(img, 0x231a8cff);
+	else if (keycode == 19)
+		color_change(img, 0x12ff8c1a);
+	else if (keycode == 20)
+		color_change(img, 0x00ff471a);
 	else if (keycode == 49)
 		img->stop = 1;
 	else if (keycode == 36)
