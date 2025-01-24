@@ -6,13 +6,13 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:01:17 by imqandyl          #+#    #+#             */
-/*   Updated: 2025/01/24 15:01:21 by imqandyl         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:46:38 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	str_compare(const char *s1, const char *s2)
 {
 	size_t	i;
 
@@ -22,7 +22,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-double	ft_pow(int base, unsigned int pow)
+double	power(int base, unsigned int pow)
 {
 	double	res;
 
@@ -35,7 +35,7 @@ double	ft_pow(int base, unsigned int pow)
 	return (res);
 }
 
-double	ft_atof(const char *str)
+double	str_to_double(const char *str)
 {
 	double			res;
 	double			sign;
@@ -57,11 +57,11 @@ double	ft_atof(const char *str)
 		i++;
 	j = 1;
 	while (str[i] >= '0' && str[i] <= '9')
-		res = res + (str[i++] - '0') / ft_pow(10.0, j++);
+		res = res + (str[i++] - '0') / power(10.0, j++);
 	return (res * sign);
 }
 
-int	error_check(const char *str)
+int	validate_number(const char *str)
 {
 	int	flag;
 	int	i;
@@ -83,7 +83,7 @@ int	error_check(const char *str)
 	return (flag);
 }
 
-void	ft_putstr(char *str)
+void	print_str(char *str)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:01:25 by imqandyl          #+#    #+#             */
-/*   Updated: 2025/01/24 15:01:28 by imqandyl         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:37:15 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ void	init_values(t_data *img)
 void	init_fractol(t_data *img, int argc, char **argv)
 {
 	init_values(img);
-	if (argc == 4 && ft_strcmp(argv[1], "julia") == 0)
+	if (argc == 4 && str_compare(argv[1], "julia") == 0)
 	{
-		if (error_check(argv[2]) == 0 || error_check(argv[3]) == 0)
-			ft_error();
-		img->cx = ft_atof(argv[2]);
-		img->cy = ft_atof(argv[3]);
+		if (validate_number(argv[2]) == 0 || validate_number(argv[3]) == 0)
+			print_error();
+		img->cx = str_to_double(argv[2]);
+		img->cy = str_to_double(argv[3]);
 		if (img->cx < -2.0 || img->cx > 2.0 || img->cy < -2.0 || img->cy > 2.0)
-			ft_error();
+			print_error();
 		img->flag = 0;
 	}
-	else if (argc == 2 && ft_strcmp(argv[1], "mandelbrot") == 0)
+	else if (argc == 2 && str_compare(argv[1], "mandelbrot") == 0)
 		img->flag = 1;
 	else
 	{
-		ft_putstr("Please enter:\n\t\"./fractol mandelbrot\"\
+		print_str("Please enter:\n\t\"./fractol mandelbrot\"\
 			or \n\t\"./fractol julia <value_1> <value_2>\"");
 		exit(EXIT_FAILURE);
 	}
@@ -55,9 +55,9 @@ void	init_fractol(t_data *img, int argc, char **argv)
 void	visualize(t_data *img)
 {
 	if (img->flag == 0)
-		show_julia(img);
+		render_julia(img);
 	else if (img->flag == 1)
-		show_mandelbrot(img);
+		render_mandelbrot(img);
 }
 
 int	main(int argc, char **argv)
@@ -69,13 +69,13 @@ int	main(int argc, char **argv)
 		init_fractol(&img, argc, argv);
 		visualize(&img);
 		mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
-		mlx_hook(img.mlx_win, 2, 5, keypad, &img);
-		mlx_mouse_hook(img.mlx_win, mouse, &img);
-		mlx_hook(img.mlx_win, 6, 1L < 6, mouse_julia, &img);
-		mlx_hook(img.mlx_win, 17, 1L << 17, ft_close, 0);
+		mlx_hook(img.mlx_win, 2, 5, handle_keypress, &img);
+		mlx_mouse_hook(img.mlx_win, handle_mouse, &img);
+		mlx_hook(img.mlx_win, 6, 1L < 6, handle_julia_mouse_move, &img);
+		mlx_hook(img.mlx_win, 17, 1L << 17, handle_close, 0);
 		mlx_loop(img.mlx);
 	}
 	else
-		ft_error();
+		print_error();
 	return (0);
 }

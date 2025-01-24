@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:01:31 by imqandyl          #+#    #+#             */
-/*   Updated: 2025/01/24 15:01:41 by imqandyl         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:02:35 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	algorithm(t_data *img, int w, int h)
 	double	zx;
 	double	zy;
 
-	zx = compute_x0(img, w);
-	zy = compute_y0(img, h);
+	zx = get_scaled_x(img, w);
+	zy = get_scaled_y(img, h);
 	img->xtemp = 0.0;
 	img->iteration = 0;
 	img->max_iteration = 500;
@@ -35,7 +35,7 @@ static void	algorithm(t_data *img, int w, int h)
 		my_mlx_pixel_put(img, w, h, img->base_color * img->iteration);
 }
 
-void	show_julia(t_data *img)
+void	render_julia(t_data *img)
 {
 	int	h;
 	int	w;

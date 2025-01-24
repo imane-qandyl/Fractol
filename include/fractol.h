@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:43:57 by imqandyl          #+#    #+#             */
-/*   Updated: 2024/10/10 21:14:14 by imqandyl         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:36:15 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,24 @@ typedef struct s_data
 	double	y_axis;
 	char	name;
 }	t_data;
-void	show_mandelbrot(t_data *img);
-void	show_julia(t_data *img);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	arrow_move(t_data *img, int keycode);
-void	init_fractol(t_data *img, int ac, char **av);
 
-int		mouse(int mouse_key_code, int x, int y, t_data *img);
-int		keypad(int keycode, t_data *img);
-int		mouse_julia(int x, int y, t_data *img);
-void	color_change(t_data *img, int color);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int colour);
-double	compute_x0(t_data *img, int w);
-double	compute_y0(t_data *img, int h);
-double	ft_atof(const char *str);
-int		ft_strcmp(const char *s1, const char *s2);
-int		ft_close(void);
-int		error_check(const char *str1);
-void	ft_putstr(char *str);
-void	ft_error(void);
+// Function declarations with new names
+void	render_mandelbrot(t_data *img);
+void	render_julia(t_data *img);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	handle_arrow_keys(t_data *img, int keycode);
+void	init_fractol(t_data *img, int ac, char **av);
+int		handle_mouse(int mouse_key_code, int x, int y, t_data *img);
+int		handle_keypress(int keycode, t_data *img);
+int		handle_julia_mouse_move(int x, int y, t_data *img);
+void	update_color(t_data *img, int color);
+double	get_scaled_x(t_data *img, int w);
+double	get_scaled_y(t_data *img, int h);
+double	str_to_double(const char *str);
+int		str_compare(const char *s1, const char *s2);
+int		handle_close(void);
+int		validate_number(const char *str1);
+void	print_str(char *str);
+void	print_error(void);
 
 #endif

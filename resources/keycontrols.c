@@ -6,14 +6,14 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:01:49 by imqandyl          #+#    #+#             */
-/*   Updated: 2025/01/24 15:01:51 by imqandyl         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:36:37 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/mlx.h"
 #include "fractol.h"
 
-int	mouse(int mouse_key_code, int x, int y, t_data *img)
+int	handle_mouse(int mouse_key_code, int x, int y, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
 	if (mouse_key_code == 5)
@@ -29,14 +29,14 @@ int	mouse(int mouse_key_code, int x, int y, t_data *img)
 		img->zoom /= 1.1;
 	}
 	if (img->flag == 0)
-		show_julia(img);
+		render_julia(img);
 	else if (img->flag == 1)
-		show_mandelbrot(img);
+		render_mandelbrot(img);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
 	return (0);
 }
 
-int	mouse_julia(int x, int y, t_data *img)
+int	handle_julia_mouse_move(int x, int y, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
 	if (img->stop == 0)
@@ -46,12 +46,12 @@ int	mouse_julia(int x, int y, t_data *img)
 		img->cx = (y - img->height / 2) / (0.25 * img->zoom * img->height)
 			+ img->y_move;
 	if (img->flag == 0)
-		show_julia(img);
+		render_julia(img);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
 	return (0);
 }
 
-void	arrow_move(t_data *img, int keycode)
+void	handle_arrow_keys(t_data *img, int keycode)
 {
 	if (keycode == 2 || keycode == 124)
 		img->x_move += -0.1 / img->zoom;
@@ -63,12 +63,12 @@ void	arrow_move(t_data *img, int keycode)
 		img->y_move += -0.1 / img->zoom;
 }
 
-void	color_change(t_data *img, int color)
+void	update_color(t_data *img, int color)
 {
 	img->base_color = color;
 }
 
-int	keypad(int keycode, t_data *img)
+int	handle_keypress(int keycode, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
 	if (keycode == 53)
@@ -77,20 +77,20 @@ int	keypad(int keycode, t_data *img)
 		exit(0);
 	}
 	else if (keycode == 18)
-		color_change(img, 0x231a8cff);
+		update_color(img, 0x231a8cff);
 	else if (keycode == 19)
-		color_change(img, 0x12ff8c1a);
+		update_color(img, 0x12ff8c1a);
 	else if (keycode == 20)
-		color_change(img, 0x00ff471a);
+		update_color(img, 0x00ff471a);
 	else if (keycode == 49)
 		img->stop = 1;
 	else if (keycode == 36)
 		img->stop = 0;
-	arrow_move(img, keycode);
+	handle_arrow_keys(img, keycode);
 	if (img->flag == 0)
-		show_julia(img);
+		render_julia(img);
 	else if (img->flag == 1)
-		show_mandelbrot(img);
+		render_mandelbrot(img);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
 	return (0);
 }

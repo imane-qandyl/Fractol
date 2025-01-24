@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:02:02 by imqandyl          #+#    #+#             */
-/*   Updated: 2025/01/24 15:02:05 by imqandyl         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:04:18 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-double	compute_x0(t_data *img, int w)
+double	get_scaled_x(t_data *img, int w)
 {
 	double	result;
 
@@ -29,7 +29,7 @@ double	compute_x0(t_data *img, int w)
 	return (result);
 }
 
-double	compute_y0(t_data *img, int h)
+double	get_scaled_y(t_data *img, int h)
 {
 	double	result;
 
@@ -39,13 +39,13 @@ double	compute_y0(t_data *img, int h)
 	return (result);
 }
 
-void	ft_error(void)
+void	print_error(void)
 {
-	ft_putstr(ERROR_MESSAGE);
+	print_str(ERROR_MESSAGE);
 	exit(1);
 }
 
-int	ft_close(void)
+int	handle_close(void)
 {
 	exit(1);
 	return (0);

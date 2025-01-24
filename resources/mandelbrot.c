@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:01:55 by imqandyl          #+#    #+#             */
-/*   Updated: 2025/01/24 15:01:57 by imqandyl         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:05:01 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	algorithm(t_data *img, int w, int h)
 	img->offset = 0.05;
 	while (x * x + y * y < 2 * 2 && img->iteration < img->max_iteration)
 	{
-		img->xtemp = x * x - y * y + compute_x0(img, w);
-		y = 2.0 * x * y + compute_y0(img, h);
+		img->xtemp = x * x - y * y + get_scaled_x(img, w);
+		y = 2.0 * x * y + get_scaled_y(img, h);
 		x = img->xtemp;
 		img->iteration += 1;
 	}
@@ -36,7 +36,7 @@ static void	algorithm(t_data *img, int w, int h)
 		my_mlx_pixel_put(img, w, h, img->base_color * img->iteration);
 }
 
-void	show_mandelbrot(t_data *img)
+void	render_mandelbrot(t_data *img)
 {
 	int	h;
 	int	w;
@@ -45,7 +45,7 @@ void	show_mandelbrot(t_data *img)
 	while (h < img->height)
 	{
 		w = 5;
-		compute_y0(img, h);
+		get_scaled_y(img, h);
 		while (w < img->width)
 		{
 			algorithm(img, w, h);
