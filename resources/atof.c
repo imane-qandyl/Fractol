@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 20:01:19 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/22 07:33:39 by imqandyl         ###   ########.fr       */
+/*   Created: 2025/01/24 15:01:17 by imqandyl          #+#    #+#             */
+/*   Updated: 2025/01/24 15:01:21 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/mlx.h"
 #include "fractol.h"
 
 int	ft_strcmp(const char *s1, const char *s2)

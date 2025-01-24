@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/30 18:28:03 by imqandyl          #+#    #+#              #
-#    Updated: 2024/09/21 20:11:16 by imqandyl         ###   ########.fr        #
+#    Created: 2025/01/24 15:02:09 by imqandyl          #+#    #+#              #
+#    Updated: 2025/01/24 15:02:11 by imqandyl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := fractol
 
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror -Iinclude 
+CFLAGS := -Wall -Wextra -Werror -Iinclude
 LIBRARY := -L./minilibx -lmlx -framework OpenGL -framework AppKit
 
 SRCS := fractol.c julia.c atof.c keycontrols.c render.c mandelbrot.c
@@ -24,17 +24,17 @@ MINILIBX := minilibx/
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(MINILIBX) # Build the MiniLibX library
+	make -C $(MINILIBX)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBRARY) -o $(NAME)
 
-resources/%.o: resources/%.c
+resources/%.o: resources/%.c 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make clean -C $(MINILIBX) # Clean MiniLibX build
+	make clean -C $(MINILIBX)
 	rm -f $(OBJ) # Remove object files
 
 fclean: clean
-	rm -f $(NAME) # Remove the final executable
+	rm -f $(NAME)
 
 re: fclean all

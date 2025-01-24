@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 20:03:59 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/22 08:10:39 by imqandyl         ###   ########.fr       */
+/*   Created: 2025/01/24 15:02:02 by imqandyl          #+#    #+#             */
+/*   Updated: 2025/01/24 15:02:05 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/mlx.h"
 #include "fractol.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)

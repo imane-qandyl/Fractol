@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:43:57 by imqandyl          #+#    #+#             */
-/*   Updated: 2024/09/21 20:35:40 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/10/10 21:14:14 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,17 @@ typedef struct s_data
 	double	y_axis;
 	char	name;
 }	t_data;
-/* --- plot the Fractols --- */
 void	show_mandelbrot(t_data *img);
 void	show_julia(t_data *img);
-// void	show_tricorn(t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	arrow_move(t_data *img, int keycode);
 void	init_fractol(t_data *img, int ac, char **av);
 
-/* --- Zoom and Translation --- */
 int		mouse(int mouse_key_code, int x, int y, t_data *img);
 int		keypad(int keycode, t_data *img);
 int		mouse_julia(int x, int y, t_data *img);
 void	color_change(t_data *img, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int colour);
-/* ---libft and Modified atof for floats/double --- */
 double	compute_x0(t_data *img, int w);
 double	compute_y0(t_data *img, int h);
 double	ft_atof(const char *str);

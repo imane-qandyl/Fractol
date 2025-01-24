@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 20:11:09 by aabashee          #+#    #+#             */
-/*   Updated: 2024/10/10 15:12:29 by imqandyl         ###   ########.fr       */
+/*   Created: 2025/01/24 15:01:49 by imqandyl          #+#    #+#             */
+/*   Updated: 2025/01/24 15:01:51 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/mlx.h"
 #include "fractol.h"
 
-// handles mouse events
 int	mouse(int mouse_key_code, int x, int y, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);

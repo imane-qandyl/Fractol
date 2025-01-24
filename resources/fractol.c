@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 20:00:15 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/22 07:56:03 by imqandyl         ###   ########.fr       */
+/*   Created: 2025/01/24 15:01:25 by imqandyl          #+#    #+#             */
+/*   Updated: 2025/01/24 15:01:28 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/mlx.h"
 #include "fractol.h"
 
 void	init_values(t_data *img)

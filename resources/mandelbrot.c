@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 20:04:27 by aabashee          #+#    #+#             */
-/*   Updated: 2024/09/22 08:06:24 by imqandyl         ###   ########.fr       */
+/*   Created: 2025/01/24 15:01:55 by imqandyl          #+#    #+#             */
+/*   Updated: 2025/01/24 15:01:57 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/mlx.h"
 #include "fractol.h"
 
 static void	algorithm(t_data *img, int w, int h)
